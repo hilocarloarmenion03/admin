@@ -1,7 +1,6 @@
 import { signOut } from "@/app/actions/auth";
 import { requireAdmin } from "@/lib/auth/authorization";
-
-export default async function AdminPage() {
-  const user = await requireAdmin();
-  return (<div className="hq-admin"><header><strong className="hq-mark">LOXADA / HQ</strong><form action={signOut}><button className="hq-signout" type="submit">Sign out ↗</button></form></header><p className="hq-kicker" style={{marginTop:75}}>Control center / secure</p><h1>Headquarters<br />overview.</h1><p>Signed in as {user.email}</p><div className="hq-dashboard"><strong>Owner access confirmed</strong><p>Your central workspace is secured. Management tools will be added here later.</p></div></div>);
+export default async function AdminPage(){
+ const user=await requireAdmin();
+ return <main className="hq"><aside className="hq-rail"><strong>L.</strong><div><span>▦</span><span>◈</span><span>☷</span></div><small>HQ<br/>001</small></aside><div className="hq-body"><header className="hq-header"><b>LOXADA / CONTROL CENTER</b><span>AUTHORIZED OWNER ACCESS</span></header><section className="hq-console"><div className="hq-console-title"><div><p className="eyebrow">HEADQUARTERS / MAIN CONTROL</p><h1>Overview<span>.</span></h1><p>{user.email} · Owner administration</p></div><form action={signOut}><button type="submit" className="hq-logout">SIGN OUT ↗</button></form></div><div className="hq-grid"><article className="hq-main-tile"><p className="eyebrow">BUSINESS UNITS / 03</p><h2>Every department.<br/>One direction.</h2><ul><li><b>01</b> Manga & Light Novel</li><li><b>02</b> Anime</li><li><b>03</b> Merchandise</li></ul></article><article className="hq-tile"><p className="eyebrow">SECURITY</p><h3>Access verified</h3><p>Your session and administrator role are checked on the server.</p></article><article className="hq-tile"><p className="eyebrow">NEXT PHASE</p><h3>Foundation ready</h3><p>Business operations will be built after access management.</p></article></div></section></div></main>;
 }
