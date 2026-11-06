@@ -1,43 +1,36 @@
 "use server";
-
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-
-const REQUIRED_ROLE = "owner_admin";
+import { isStaffRole, destinationForRole } from "@/lib/auth/roles";
 
 export async function signIn(formData: FormData) {
-  const email = formData.get("email");
+  const identity = formData.get("email");
   const password = formData.get("password");
-  const requestedIdentity = typeof email === "string" ? email.trim() : "";
-  // Alias resolves to a real Supabase Auth email. It grants no role or permission.
-  const actualEmail = requestedIdentity.toLowerCase() === "admin"
-    ? process.env.ADMIN_LOGIN_EMAIL
-    : requestedIdentity;
-  if (typeof actualEmail !== "string" || typeof password !== "string" ||
-      !actualEmail.includes("@") || actualEmail.length > 254 || !password || password.length > 1024) {
+  const raw = typeof identity === "string" ? identity.trim() : "";
+  // Optional private alias. This NEVER grants a role.
+  const email = raw.toLowerCase() === "admin" ? process.env.ADMIN_LOGIN_EMAIL : raw;
+  if (typeof email !== "string" || !email.includes("@") || email.length > 254 ||
+      typeof password !== "string" || !password || password.length > 1024) {
     redirect("/login?error=invalid");
   }
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY) {
     redirect("/login?error=configuration");
   }
   const supabase = await createClient();
-  const { error } = await supabase.auth.signInWithPassword({ email: actualEmail.trim(), password });
-  if (error) redirect("/login?error=invalid");
-  const { data: { user }, error: sessionError } = await supabase.auth.getUser();
-  if (sessionError || !user || !user.email_confirmed_at) {
+  const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+  if (signInError) redirect("/login?error=invalid");
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+  if (authError || !user?.email_confirmed_at) {
     await supabase.auth.signOut();
     redirect("/login?error=invalid");
   }
   const { data: membership, error: roleError } = await supabase
-    .from("staff_roles")
-    .select("role")
-    .eq("user_id", user.id)
-    .maybeSingle();
-  if (roleError || membership?.role !== REQUIRED_ROLE) {
+    .from("staff_roles").select("role").eq("user_id", user.id).maybeSingle();
+  if (roleError || !isStaffRole(membership?.role)) {
     await supabase.auth.signOut();
     redirect("/login?error=unauthorized");
   }
-  redirect("/admin");
+  redirect(destinationForRole(membership.role));
 }
 
 export async function signOut() {
