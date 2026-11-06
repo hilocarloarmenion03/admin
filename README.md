@@ -1,34 +1,36 @@
 # Loxada — Headquarters
 
-Two independent **account types**, not two shared accounts.
+Headquarters has **exactly two staff account types**:
 
 | Type | Database role | Dashboard | Responsibility |
 | --- | --- | --- | --- |
-| Executive | `executive` | `/executive` | Company reports, governance, business decisions |
-| Technical administrator | `tech_admin` | `/admin` | Technical controls, system security, staff access administration (future tools) |
+| Executive | `executive` | `/executive` | Company reports, governance and business decisions |
+| Technical administrator | `tech_admin` | `/admin` | Technical controls, system security and staff access administration (future tools) |
 
-**Owner authority is separate:** an executive is not automatically the Owner. The trusted `staff_roles.is_owner` flag defaults to `false` and can only be set by a separately approved operator procedure. The database rejects a technical administrator with `is_owner = true`.
+There is **no extra Owner permission flag**. Each role grants only its defined access. The company-wide Owner governance/BI service in the V1 business architecture remains a *business-system responsibility*, not a separate user boolean in Headquarters.
 
-## Authentication and permissions
+## Authentication and authorization
 
-- All staff use the same `/login` with **individual** Supabase Auth identities.
-- After verifying email/password, confirmed email and the trusted staff role, the server redirects to the matching dashboard.
-- `/admin` and `/executive` are protected server-side in both their layouts and pages. Neither role can enter the other area.
-- `staff_roles` uses RLS: members may read their own record but cannot assign or edit roles from the client.
-- No signup or self-assignment. No real approvals, user administration forms, business reports or technical monitoring actions are implemented yet.
-- The optional legacy `admin` username alias resolves to `ADMIN_LOGIN_EMAIL` if configured; it **never** authorizes a session. Prefer unique real emails. Never use `admin/admin` as public credentials.
-- API routes, server actions and data queries added later must enforce their own permissions; page protection alone is insufficient.
+- Staff members use **individual** Supabase Auth accounts at `/login`.
+- After checking email/password, email confirmation and `public.staff_roles.role`, the server redirects to the role's dashboard.
+- `/executive` and `/admin` are protected by server-side role checks on their pages and layouts; each denies the other role.
+- RLS allows each authenticated staff member to read their own role only. Staff cannot self-assign or edit roles.
+- No public registration, user-management forms, live business approvals or monitoring tools are implemented.
+- The optional `admin` username alias uses `ADMIN_LOGIN_EMAIL`; it is **not** an authorization grant. Real staff should use their own email and strong private password.
+- Future server actions, APIs and business tables must independently enforce the two roles; dashboard access alone is not authorization for mutations.
 
-## Provisioning staff
+## Provisioning
 
-A trusted operator may run `node scripts/provision-staff.mjs` locally with private `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `STAFF_EMAIL`, `STAFF_ROLE` (`executive` or `tech_admin`). The script creates an **unconfirmed** Auth user and inserts a non-Owner staff role, with a random temporary password printed to the trusted terminal. Confirm email ownership and rotate that temporary password before live use. Do not put the secret or password in browser code, GitHub, chat logs or a public deployment.
+A trusted operator may run `node scripts/provision-staff.mjs` with private `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `STAFF_EMAIL` and `STAFF_ROLE` (`executive` or `tech_admin`). The script creates an unconfirmed Auth user, inserts their department role and prints a unique temporary password privately. Verify email ownership and rotate the password before live use. Never commit credentials.
 
-For an **existing** Auth user, an authorized operator must assign that actual user's UUID to `public.staff_roles` through a trusted process. Do not assume the Auth account automatically has executive privileges.
+For an existing Auth account, staff provisioning must use the account's actual UUID. No `is_owner` column or field should be provided.
 
-The previously used `owner_admin` role is retired in Headquarters. The other three department databases and repositories are **unchanged**.
+## Schema history
+
+- `supabase/migrations/20261106_headquarters_executive_tech_rbac.sql` records the previously applied migration for audit history; it introduced a provisional Owner flag.
+- `supabase/migrations/20261106_remove_unrequested_owner_flag.sql` is the corrective applied migration that **removes** that flag and retains exactly two roles. Do not re-run the earlier migration after the correction.
+- This change applies to Headquarters only; the Manga, Anime and Merchandise databases were not modified.
 
 ## Development
 
-Set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` on the relevant Supabase project. Build with `npm run build` and run with `npm run dev`. Confirm real end-to-end login only when authorized staff accounts are available.
-
-See `supabase/migrations/20261106_headquarters_executive_tech_rbac.sql` for the applied role migration.
+Configure `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, then run `npm install`, `npm run dev` or `npm run build`. Real login requires an appropriately provisioned Auth user and role record.

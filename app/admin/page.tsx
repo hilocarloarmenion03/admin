@@ -25,7 +25,7 @@ export default async function TechnicalDashboard() {
           <article><span>02 / INFRASTRUCTURE</span><h2>Service controls</h2><p>Deployment monitoring and technical settings will be connected later.</p></article>
           <article><span>03 / AUDIT</span><h2>Security records</h2><p>Audit logging dashboards are planned, not active.</p></article>
         </div>
-        <p className="tech-boundary">No business spending, project approvals, or Owner-only decisions are granted to this role.</p>
+        <p className="tech-boundary">Technical administrators cannot approve business spending or projects.</p>
       </div>
     </section>
   </main>;

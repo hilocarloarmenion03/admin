@@ -23,7 +23,7 @@ if (error || !data.user) {
   process.exit(1);
 }
 const { error: roleError } = await supabase.from("staff_roles").insert({
-  user_id: data.user.id, role, is_owner: false,
+  user_id: data.user.id, role,
 });
 if (roleError) {
   console.error("Auth user created but staff role assignment failed; manually reconcile the account:", roleError.message);
@@ -32,4 +32,3 @@ if (roleError) {
 console.log("Unconfirmed staff account created for", email, "with role", role);
 console.log("Temporary password shown once in this trusted terminal:", temporaryPassword);
 console.log("Confirm account email ownership; change the temporary password before production use.");
-console.log("Owner authority has NOT been granted.");
