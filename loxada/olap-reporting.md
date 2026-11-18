@@ -16,3 +16,5 @@ Show the active filters, date grouping, and any drill focus. Keep the filter ran
 Define each metric's grain, source, business date, inclusion rules, access scope, and freshness. Distinguish zero from unavailable data and current state from historical state. Verify slice and dice, drill transitions, pivot invariance, subtotal reconciliation, role boundaries, and exact drill-through on the reports that provide it.
 
 The Account Access reference implementation spans [HQ](../README.md), [Manga & Light Novel](https://github.com/lozadatech01/mangalightnovel/blob/main/docs/bi-standard.md), [Anime](https://github.com/hebratech01/anime/blob/main/docs/bi-standard.md), and [Merch](https://github.com/padregandatech01/merch/blob/main/docs/bi-standard.md).
+
+See the [data warehousing glossary reference](data-warehousing-reference.md) for shared terminology on dimensional modeling, data integration, and governance.
