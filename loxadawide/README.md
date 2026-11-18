@@ -1,6 +1,6 @@
 # Loxada-wide BI and data design
 
-**Status:** Proposed project-wide standard and rollout. This document describes the design, not completed implementation. Repository baseline reviewed on 2026-11-18 (Asia/Manila). The review covered source and documentation, not signed-in deployments or production data.
+**Status:** Proposed project-wide standard and rollout. This document describes the design, not completed implementation. Repository baseline reviewed on 2026-11-18 (Asia/Manila). The initial review covered source and documentation. The Account Access implementation is tracked separately below.
 
 ## Purpose
 
@@ -8,13 +8,19 @@ Design each business workflow so staff can do the work today and explain what ha
 
 The first use case beyond Account Access is **historical Supplier Activity in Manga & Light Novel, Anime, and Merch**, followed by an approved rollup in Headquarters (HQ). The longer-term design anticipates editorial, media, and commerce workflows without assuming they already exist.
 
-## Current baseline
+## Original baseline
 
 - The three department repos contain Account Analysis and a read-only Supplier Activity report. Account Analysis counts current account records by registration or admin role assignment date. Current access status is not a historical suspension snapshot.
 - Supplier Activity covers current invitation and application queues, account access status, oldest pending application, and intake in two adjacent 30-day windows. It is not a historical funnel or a company-wide report.
 - Supplier relationships, private messages, and application reviews are distinct. Some invitation transitions already produce structured notices. Reuse reliable event types and timestamps where available, but do not treat message text, current status, or missing older notices as complete history.
 - HQ has role-separated executive and technical dashboard shells. Neither contains live reporting modules in the reviewed source.
 - The older central documentation hub references temporary app repos. Use the current app sources linked below for implementation evidence.
+
+## Account Access implementation
+
+- **Manga & Light Novel, Anime, and Merch** extend their existing Account Analysis with visible date drill controls, clickable year and quarter headings, and linked portal-only subtotals. Report controls and record-list filters stay independent. Counts use current department records and Manila time, not historical access state.
+- **HQ** has read-only Account Access at `/admin/accounts` for technical admins and `/executive/accounts` for executives. Its only measure is current HQ staff role records, grouped by the record creation date and role. Staff counts have no individual drill-through. The report does not load any department accounts or claim to count unique people across the company.
+- Historical Supplier Activity, a company-wide department data feed, and later content and commerce reports are separate proposals.
 
 ## Process and dimension map
 

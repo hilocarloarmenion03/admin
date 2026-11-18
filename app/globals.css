@@ -19,3 +19,32 @@
 .hq-exec-content{padding:clamp(26px,6vw,80px)}.hq-exec-empty h1{font-family:Georgia,serif;font-size:clamp(32px,5vw,54px);letter-spacing:-.04em;font-weight:500;margin:0 0 12px}.hq-exec-empty p{color:#748276}
 @media(max-width:780px){.hq-tech-shell{grid-template-columns:1fr}.hq-tech-rail{border-right:0;border-bottom:1px solid #365047;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:14px;padding:17px 20px}.hq-tech-rail nav{grid-column:1}.hq-tech-account{grid-column:2;grid-row:1/span 2;display:flex;align-items:center;gap:12px;justify-content:flex-end;flex-wrap:wrap}.hq-tech-account form{margin:0}.hq-tech-account button{margin:0}.hq-exec-bar{flex-wrap:wrap}.hq-exec-bar nav{order:3;flex-basis:100%}}
 @media(max-width:480px){.hq-tech-rail{display:flex;flex-wrap:wrap;flex-direction:row;justify-content:space-between}.hq-tech-brand{width:100%}.hq-tech-account{justify-content:flex-start}.hq-tech-rail nav a{padding:10px 14px}.hq-exec-bar{gap:12px}.hq-exec-bar>strong{width:100%}.hq-exec-account{margin-left:auto}.hq-exec-content{padding:26px 20px}}
+
+/* Headquarters account reporting stays inside each role's workspace. */
+.hq-account-report{width:100%;min-width:0;max-width:1140px;margin:0 auto;padding:clamp(14px,3vw,32px);color:#172033}
+.hq-account-report h1{margin:.25rem 0;font-size:clamp(1.7rem,4vw,2.4rem);font-weight:800;line-height:1.18}
+.hq-account-report h2{margin:0;font-size:1.2rem;font-weight:750}
+.hq-report-kicker{margin:0;font-size:.72rem;font-weight:750;letter-spacing:.11em;color:#475569}
+.hq-account-report header>p:last-child{margin:.45rem 0 1rem;color:#475569}
+.hq-report-card{background:#fff;border:1px solid #dbe2eb;border-radius:14px;padding:clamp(12px,2vw,21px);box-shadow:0 4px 16px #0f172a0a}
+.hq-report-count{font-size:.93rem;font-weight:650}
+.hq-report-form{display:grid;align-items:end;grid-template-columns:repeat(auto-fit,minmax(min(100%,152px),1fr));gap:12px;margin:16px 0}
+.hq-report-form label{display:grid;gap:4px;font-size:.875rem;font-weight:650}
+.hq-report-form select,.hq-report-form button{min-width:0;min-height:42px;border:1px solid #b5c3d6;border-radius:7px;padding:7px 10px;color:#172033;background:#fff}
+.hq-report-form button{background:#17418b;border-color:#17418b;color:#fff;font-weight:700;cursor:pointer}
+.hq-report-drills{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:14px 0;font-size:.86rem}
+.hq-report-drills span{font-weight:700;margin-inline-end:3px}
+.hq-report-drills a{border:1px solid #c6d3e6;border-radius:7px;padding:7px 10px;background:#f5f8ff}
+.hq-account-report a{color:#193e84;text-decoration:underline;text-underline-offset:3px}
+.hq-account-report :is(a,button,select):focus-visible{outline:2px solid #285fba;outline-offset:3px}
+.hq-report-table-wrap{overflow:auto}
+.hq-report-table-wrap table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hq-report-table-wrap :is(th,td){padding:9px 11px;border-bottom:1px solid #e2e8f0;text-align:right;white-space:nowrap}
+.hq-report-table-wrap :is(th,td):first-child{text-align:left}
+.hq-report-table-wrap :is(thead,tfoot){font-weight:700;background:#f1f5f9}
+.hq-report-note{margin:12px 0 0;color:#475569;font-size:.82rem}
+.hq-tech-rail nav,.hq-exec-bar nav{display:flex;gap:8px 14px;flex-wrap:wrap}
+.hq-tech-rail nav{flex-direction:column}
+.hq-exec-content:has(.hq-account-report),.hq-tech-content:has(.hq-account-report){padding:0}
+.hq-tech-content:has(.hq-account-report){background:#eef2f7}
+@media(max-width:780px){.hq-tech-rail nav{flex-direction:row}}

@@ -7,7 +7,7 @@ export default async function TechnicalLayout({children}:{children:React.ReactNo
   return <div className="hq-tech-shell">
     <aside className="hq-tech-rail">
       <div className="hq-tech-brand">Loxada <span>IT</span></div>
-      <nav aria-label="Technical navigation"><Link href="/admin" aria-current="page">Overview</Link></nav>
+      <nav aria-label="Technical navigation"><Link href="/admin">Overview</Link><Link href="/admin/accounts">Account Access</Link></nav>
       <div className="hq-tech-account"><strong title={member.user.email}>{username}</strong><span>Technical Admin</span><form action={signOut}><button type="submit">Log out</button></form></div>
     </aside>
     <div className="hq-tech-content">{children}</div>

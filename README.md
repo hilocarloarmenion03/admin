@@ -5,7 +5,7 @@ Headquarters has **exactly two staff account types**:
 | Type | Database role | Dashboard | Responsibility |
 | --- | --- | --- | --- |
 | Executive | `executive` | `/executive` | Company reports, governance and business decisions |
-| Technical administrator | `tech_admin` | `/admin` | Technical controls, system security and staff access administration (future tools) |
+| Technical administrator | `tech_admin` | `/admin` | Technical controls, system security and staff access administration |
 
 There is **no extra Owner permission flag**. Each role grants only its defined access. The company-wide Owner governance/BI service in the V1 business architecture remains a *business-system responsibility*, not a separate user boolean in Headquarters.
 
@@ -18,6 +18,12 @@ There is **no extra Owner permission flag**. Each role grants only its defined a
 - No public registration, user-management forms, live business approvals or monitoring tools are implemented.
 - The optional `admin` username alias uses `ADMIN_LOGIN_EMAIL`; it is **not** an authorization grant. Real staff should use their own email and strong private password.
 - Future server actions, APIs and business tables must independently enforce the two roles; dashboard access alone is not authorization for mutations.
+
+## Account Access
+
+Executives open `/executive/accounts`; technical admins open `/admin/accounts`. Each route enforces its own HQ role and shows current HQ staff role counts by Manila year, quarter, or month. The report has role and date filters, drill up and down, and a pivot between role and time. Staff counts are aggregate-only with no individual drill-through, department data, account mutations, or sign-in status.
+
+The `hq_staff_account_counts` RPC checks that the caller is verified HQ staff. The migration does not expand the staff table's existing row-level read permissions or require a new app secret. Run `node --test tests/staff-account-report.test.mjs` for the report model checks. See [Loxada-wide BI and data design](loxadawide/README.md) for metric scope and department references.
 
 ## Provisioning
 
