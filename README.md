@@ -21,7 +21,7 @@ There is **no extra Owner permission flag**. Each role grants only its defined a
 
 ## Account Access
 
-Executives open `/executive/accounts`; technical admins open `/admin/accounts`. Each route enforces its own HQ role and shows current HQ staff role counts by Manila year, quarter, or month. The report has role and date filters, drill up and down, and a pivot between role and time. Staff counts are aggregate-only with no individual drill-through, department data, account mutations, or sign-in status.
+Executives open `/executive/accounts`; technical admins open `/admin/accounts`. Each route enforces its own HQ role and shows current HQ staff role counts by Manila year, quarter, or month. The report supports slicing by role or date, dicing by both, drilling between year, quarter, and month, and pivoting between role and time. Applied date ranges stay in place as you drill. See the [Loxada OLAP reporting standard](loxada/olap-reporting.md). Staff counts are aggregate-only with no individual drill-through, department data, account mutations, or sign-in status.
 
 The `hq_staff_account_counts` RPC checks that the caller is verified HQ staff. The migration does not expand the staff table's existing row-level read permissions or require a new app secret. Run `node --test tests/staff-account-report.test.mjs` for the report model checks. See [Loxada-wide BI and data design](loxadawide/README.md) for metric scope and department references.
 

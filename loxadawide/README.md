@@ -39,6 +39,8 @@ The editorial, media, commerce, and unified HQ reporting rows are proposals. A v
 
 ## Shared reporting standard
 
+Apply the [Loxada OLAP reporting standard](../loxada/olap-reporting.md) across all current and future repositories and systems.
+
 1. **Start with the business decision and metric definition.** Record the grain, source, business date, time zone, calculation, inclusion rules, access scope, refresh cadence, and reconciliation test. Use Asia/Manila for shared calendar boundaries. Name the date explicitly when a workflow has multiple clocks, such as submitted, reviewed, and published.
 2. **Keep current state, events, and snapshots distinct.** Use current records for today's queue, event history for changes and elapsed time, and dated snapshots when the metric asks what was true at a past cutoff. Preserve attributes as of an event when changes would affect historical analysis. Do not silently backfill from current values or fill gaps with zero.
 3. **Keep reports separate from write forms.** Queues support immediate work. Reports explain patterns. An authorized drill-through opens matching details and does not turn a completed supplier decision back into an editable form.

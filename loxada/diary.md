@@ -8,3 +8,9 @@
 4. Opened draft changes for [Manga & Light Novel](https://github.com/lozadatech01/mangalightnovel/pull/16), [Anime](https://github.com/hebratech01/anime/pull/16), and [Merch](https://github.com/padregandatech01/merch/pull/16).
 
 [Canonical V1.0 business baseline](https://github.com/hilocarloarmenion03/loxadaentertainmentscompany/blob/main/knowledge/specification/v1.0.md)
+
+## 2026-11-18 · OLAP reporting standard
+
+- Adopted slice, dice, drill down, drill up, and pivot as the reporting standard for all Loxada repositories and systems. Authorized drill-through remains available for countable portal records.
+- Updated Account Analysis so date filters survive drill-down and drill-up. Department controls keep account group, account types, and access status available together. HQ uses the same date-filter and pivot behavior for staff aggregates.
+- Added the [OLAP reporting standard](olap-reporting.md) and linked it from the repository guidance and the company-wide BI design.
