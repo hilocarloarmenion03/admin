@@ -22,7 +22,7 @@ test("drill and pivot retain the role filter and aggregate counts", () => {
   const all = parseStaffView({ role: "tech_admin", layout: "role-rows" });
   const year = drillDown(all, "2025");
   const quarter = drillDown(year, "2025-Q4");
-  assert.deepEqual(quarter, { ...all, period: "2025-Q4", level: "month" });
+  assert.deepEqual(quarter, { ...all, focus: "2025-Q4", level: "month" });
   assert.deepEqual(drillUp(quarter), year);
   assert.deepEqual(drillUp(year), all);
   const a = buildStaffCube(cells, quarter);
@@ -30,7 +30,23 @@ test("drill and pivot retain the role filter and aggregate counts", () => {
   assert.deepEqual(a, b);
   assert.equal(a.total, [...a.periodTotals.values()].reduce((sum, count) => sum + count, 0));
   assert.equal(a.total, [...a.roleTotals.values()].reduce((sum, count) => sum + count, 0));
-  assert.match(staffReportUrl("/executive/accounts", quarter), /role=tech_admin&period=2025-Q4#account-analysis/);
+  assert.match(staffReportUrl("/executive/accounts", quarter), /role=tech_admin&focus=2025-Q4#account-analysis/);
+});
+
+test("drill up and pivot preserve the date slice and staff role", () => {
+  const view = parseStaffView({ role: "tech_admin", period: "2025" });
+  const grouped = drillDown(view, "2025");
+  const focused = drillDown(grouped, "2025-Q4");
+  assert.equal(focused.period, "2025");
+  assert.equal(focused.focus, "2025-Q4");
+  assert.deepEqual(drillUp(focused), grouped);
+  assert.deepEqual(drillUp(grouped), view);
+  assert.equal(buildStaffCube(cells, focused).total, 5);
+  assert.equal(buildStaffCube(cells, { ...focused, layout: "role-rows" }).total, 5);
+  assert.equal(parseStaffView({ period: "2025", focus: "2026-Q4" }).focus, "");
+  assert.equal(parseStaffView({ period: "", previousPeriod: "2025", focus: "2025-Q4" }).focus, "");
+  const url = new URL(staffReportUrl("/admin/accounts", focused), "https://example.com");
+  assert.deepEqual(parseStaffView(Object.fromEntries(url.searchParams)), focused);
 });
 
 test("aggregate contract excludes unknown roles and distinguishes zero from bad data", () => {

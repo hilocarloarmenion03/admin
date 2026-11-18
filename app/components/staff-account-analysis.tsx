@@ -19,7 +19,7 @@ export default function StaffAccountAnalysis({ path, params, report }: {
 }) {
   const view = parseStaffView(params);
   const year = Number(manilaYear(new Date()));
-  const scopeYear = view.period.slice(0, 4) || String(year);
+  const scopeYear = (view.period || view.focus).slice(0, 4) || String(year);
   const { quarters, months } = periodsInYear(scopeYear);
   const otherYears = [...new Set([...(report?.cells ?? []).map(cell => Number(cell.month.slice(0, 4))), Number(scopeYear)])]
     .filter(value => value !== year && value !== year - 1).sort((a, b) => b - a);
@@ -46,6 +46,8 @@ export default function StaffAccountAnalysis({ path, params, report }: {
         <p role="alert">Staff account counts are unavailable. Reload to try again.</p>}
       <Form key={JSON.stringify(view)} action={path + "#account-analysis"} className="hq-report-form">
         <input type="hidden" name="layout" value={view.layout}/>
+        <input type="hidden" name="focus" value={view.focus}/>
+        <input type="hidden" name="previousPeriod" value={view.period}/>
         <label>Staff role<select name="role" defaultValue={view.role}>
           <option value="">All staff roles</option>
           {roleOptions.map(([role, label]) => <option key={role} value={role}>{label}</option>)}
@@ -63,11 +65,13 @@ export default function StaffAccountAnalysis({ path, params, report }: {
         </select></label>
         <button type="submit">Apply report filters</button>
       </Form>
+      <p className="hq-report-note"><strong>Applied filters</strong> · {view.role ? roleName(view.role) : "All staff roles"} · {view.period ? labelTime(view.period) : "All dates"}{view.focus ? " · Drilled into " + labelTime(view.focus) : ""}</p>
       <nav className="hq-report-drills" aria-label="Account analysis controls">
-        <span>{view.period ? labelTime(view.period) : "All dates"} · By {view.level}</span>
-        {up && <Link prefetch={false} href={staffReportUrl(path, up)}>↑ Drill up</Link>}
+        <span>By {view.level}</span>
+        {up && view.level !== "year" && <Link prefetch={false} href={staffReportUrl(path, up)}>↑ Drill up to {up.level === "year" ? "years" : "quarters"}</Link>}
         {down && <Link prefetch={false} href={staffReportUrl(path, down)}>↓ Drill down to {down.level === "quarter" ? "quarters" : "months"}</Link>}
-        <Link prefetch={false} href={staffReportUrl(path, pivot)}>Swap rows and columns</Link>
+        {view.focus && <Link prefetch={false} href={staffReportUrl(path, { ...view, focus: "" })}>Clear drill focus</Link>}
+        <Link prefetch={false} href={staffReportUrl(path, pivot)}>Pivot rows and columns</Link>
         <Link prefetch={false} href={path + "#account-analysis"}>Reset report</Link>
       </nav>
       {matrix && matrix.periods.length > 0 && <div className="hq-report-table-wrap"><table aria-label={timeRows ? "Account dates by staff role" : "Staff roles by account date"}>

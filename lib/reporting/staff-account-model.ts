@@ -4,7 +4,7 @@ export const roleOptions = [["executive", "Executive"], ["tech_admin", "Technica
 export const levels = ["year", "quarter", "month"] as const;
 type Level = (typeof levels)[number];
 export type StaffCell = { month: string; role: StaffRole; total: number };
-export type StaffView = { period: string; level: Level; role: StaffRole | ""; layout: "time-rows" | "role-rows" };
+export type StaffView = { period: string; focus: string; level: Level; role: StaffRole | ""; layout: "time-rows" | "role-rows" };
 export type StaffReportParams = Record<string, string | string[] | undefined>;
 
 export function periodKey(value: unknown): string {
@@ -16,9 +16,22 @@ const memberOf = (month: string, level: Level) => level === "month" ? month : le
 const phYear = new Intl.DateTimeFormat("en-PH", { timeZone: "Asia/Manila", year: "numeric" });
 export const manilaYear = (date: Date) => phYear.format(date);
 
+const inPeriod = (month: string, period: string) =>
+  !period || period === month || period === quarter(month) || period === month.slice(0, 4);
+
+function narrowerPeriod(period: string, candidate: string): string {
+  if (!candidate || depth(candidate) <= depth(period)) return "";
+  const firstMonth = depth(candidate) === 3 ? candidate : depth(candidate) === 2 ?
+    candidate.slice(0, 4) + "-" + String((Number(candidate[6]) - 1) * 3 + 1).padStart(2, "0") : candidate + "-01";
+  return inPeriod(firstMonth, period) ? candidate : "";
+}
+
 export function parseStaffView(p: StaffReportParams): StaffView {
+  const period = periodKey(p.period);
+  const focus = typeof p.previousPeriod === "string" && p.previousPeriod !== period ? "" : periodKey(p.focus);
   return {
-    period: periodKey(p.period),
+    period,
+    focus: narrowerPeriod(period, focus),
     level: p.level === "month" || p.level === "quarter" ? p.level : "year",
     role: p.role === "executive" || p.role === "tech_admin" ? p.role : "",
     layout: p.layout === "role-rows" ? "role-rows" : "time-rows",
@@ -28,23 +41,21 @@ export function staffReportUrl(path: string, view: StaffView) {
   const p = new URLSearchParams({ level: view.level, layout: view.layout });
   if (view.role) p.set("role", view.role);
   if (view.period) p.set("period", view.period);
+  if (view.focus) p.set("focus", view.focus);
   return path + "?" + p.toString() + "#account-analysis";
 }
 export function drillDown(view: StaffView, member?: string): StaffView | null {
   if (view.level === "month") return null;
   if (member && (!periodKey(member) || depth(member) !== (view.level === "year" ? 1 : 2))) return null;
-  return {
-    ...view,
-    period: member && depth(view.period) <= depth(member) ? member : view.period,
-    level: view.level === "year" ? "quarter" : "month",
-  };
+  const focus = member ? narrowerPeriod(view.focus || view.period, member) || view.focus : view.focus;
+  return { ...view, focus, level: view.level === "year" ? "quarter" : "month" };
 }
 export function drillUp(view: StaffView): StaffView | null {
-  if (view.level === "year") return view.period ? { ...view, period: "" } : null;
-  const d = depth(view.period);
-  const period = view.level === "quarter" ? (d > 1 ? view.period.slice(0, 4) : "") :
-    d === 3 ? quarter(view.period) : d === 2 ? view.period.slice(0, 4) : view.period;
-  return { ...view, period, level: view.level === "month" ? "quarter" : "year" };
+  if (view.level === "year") return view.focus ? { ...view, focus: "" } : null;
+  const d = depth(view.focus);
+  const focus = view.level === "quarter" ? "" :
+    d === 3 ? quarter(view.focus) : d === 2 ? view.focus.slice(0, 4) : view.focus;
+  return { ...view, focus: narrowerPeriod(view.period, focus), level: view.level === "month" ? "quarter" : "year" };
 }
 export function periodsInYear(year: string) {
   return {
@@ -58,9 +69,10 @@ export function isStaffCells(data: unknown): data is StaffCell[] {
 }
 export function buildStaffCube(cells: StaffCell[], view: StaffView) {
   const roles = roleOptions.map(([role]) => role).filter(role => !view.role || role === view.role);
-  const inScope = (month: string) => !view.period || view.period === month || view.period === quarter(month) || view.period === month.slice(0, 4);
+  const period = view.focus || view.period;
+  const inScope = (month: string) => inPeriod(month, period);
   const eligible = cells.filter(cell => roles.includes(cell.role) && inScope(cell.month));
-  const months = view.period ? periodsInYear(view.period.slice(0, 4)).months.filter(inScope) : eligible.map(cell => cell.month);
+  const months = period ? periodsInYear(period.slice(0, 4)).months.filter(inScope) : eligible.map(cell => cell.month);
   const periods = [...new Set(months.map(month => memberOf(month, view.level)))].sort().reverse();
   const counts = new Map<string, number>();
   const roleTotals = new Map<StaffRole, number>();
