@@ -14,3 +14,8 @@
 - Adopted slice, dice, drill down, drill up, and pivot as the reporting standard for all Loxada repositories and systems. Authorized drill-through remains available for countable portal records.
 - Updated Account Analysis so date filters survive drill-down and drill-up. Department controls keep account group, account types, and access status available together. HQ uses the same date-filter and pivot behavior for staff aggregates.
 - Added the [OLAP reporting standard](olap-reporting.md) and linked it from the repository guidance and the company-wide BI design.
+
+## 2026-11-18 · Supplier navigation
+
+- Grouped Invitations & Messages, Applications, and Activity under Suppliers in the Manga & Light Novel, Anime, and Merch admin workspaces.
+- Kept the existing routes for conversations, invitations, application reviews, and activity reports. The relevant supplier tab stays selected on detail pages.
