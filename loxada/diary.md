@@ -24,3 +24,8 @@
 
 - Mapped all eight V1.0 reports and 34 measures to their source evidence, grain, reconciliation checks, and eligibility for HQ export. See the [reporting data map](reporting-data-map.md).
 - Drafted the [Manga creator-to-reader schema](manga-reader-schema.md) with the existing account and supplier integration, rights and release gates, reading evidence, local mart, and verification cases. The design is ready for review before implementation.
+
+## 2026-11-19 · Manga admin panel grouping
+
+- Moved the live Reader Accounts report into Account Access → Account Analysis. Analytics now groups Title Engagement and Ad Settlements as related business reports. Each reports unavailable while its required source evidence is missing.
+- Verified that saved reader account filters retain their scope and moved the changes to the production branch. [Manga PR](https://github.com/lozadatech01/mangalightnovel/pull/18)
