@@ -40,3 +40,8 @@
 
 - Added Forgot password to all four sign-in pages. The same recovery flow uses the account’s sign-in email and returns the user to ordinary sign-in after the password changes.
 - Kept supplier onboarding and staff privileges separate from account recovery. Documented the hosted Site URL, reset template, and email delivery settings in the [password recovery guide](password-recovery.md).
+
+
+## 2026-11-19 · Cross-device password recovery
+
+- Made new reset links usable on a different device across all four systems. Supabase still verifies and exchanges each one-time recovery code before the app opens the reset form.

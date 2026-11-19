@@ -1,8 +1,8 @@
 # Password recovery
 
-Each Loxada sign-in page offers **Forgot password?**. Readers, subscribers, buyers, suppliers, department admins, executives, and technical admins use the email address on their account. They open the reset link in the browser that requested it, choose a new password, and sign in again. Existing department roles, account access rules, and supplier invitation requirements continue to apply.
+Each Loxada sign-in page offers **Forgot password?**. Readers, subscribers, buyers, suppliers, department admins, executives, and technical admins use the email address on their account. They open the reset link on any device, choose a new password, and sign in again. Existing department roles, account access rules, and supplier invitation requirements continue to apply.
 
-The request screen uses a neutral confirmation for any valid email address. Supabase Auth handles link expiry and request limits. The portal exchanges the one-time code, then restricts the reset form to that recovery session for ten minutes.
+The request screen uses a neutral confirmation for any valid email address. Supabase Auth handles link expiry and request limits. The email link carries the verifier in its fragment, which stays out of the portal’s request URL. The browser submits it with the one-time code in a same-origin POST. This lets a new browser open the link without access to the requesting browser’s cookies. The portal exchanges the code and verifies that Supabase issued it for recovery, then restricts the reset form to that recovery session for ten minutes.
 
 ## Hosted Auth settings
 
@@ -19,4 +19,4 @@ The app sends the production root as the recovery return URL. If `APP_ORIGIN` is
 
 The **Reset password** email template must link to Supabase’s `{{ .ConfirmationURL }}` so Auth can issue the one-time code. Production email delivery uses the project's Supabase SMTP configuration. The Supabase default email service is restricted to project team recipients. Configure a production SMTP sender for external recipients. [Supabase redirect URLs](https://supabase.com/docs/guides/auth/redirect-urls) · [Supabase SMTP](https://supabase.com/docs/guides/auth/auth-smtp)
 
-When verifying a hosted environment, request a link for an authorized test mailbox and open it from the browser that requested it. Check that the link opens the matching production site and that the account reaches the same dashboard after sign-in.
+When verifying a hosted environment, request a link for an authorized test mailbox in one browser and open it in a different browser. Check that the link opens the matching production site and that the account reaches the same dashboard after sign-in.
