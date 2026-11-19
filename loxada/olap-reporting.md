@@ -18,3 +18,7 @@ Define each metric's grain, source, business date, inclusion rules, access scope
 The Account Access reference implementation spans [HQ](../README.md), [Manga & Light Novel](https://github.com/lozadatech01/mangalightnovel/blob/main/docs/bi-standard.md), [Anime](https://github.com/hebratech01/anime/blob/main/docs/bi-standard.md), and [Merch](https://github.com/padregandatech01/merch/blob/main/docs/bi-standard.md).
 
 See the [data warehousing glossary reference](data-warehousing-reference.md) for shared terminology on dimensional modeling, data integration, and governance.
+
+## Report data
+
+Use data produced by real, authorized actions and verified sources. Keep dummy, seeded, and invented figures out of app reports and exports. When the source workflow or evidence is missing, show **Unavailable**. Show zero only when a successful query establishes a valid empty result. Release approved department summaries to HQ under the V1.0 permission and disclosure rules. Before extending real capture to customer activity or new external sources, resolve the applicable authorization and privacy requirements.
