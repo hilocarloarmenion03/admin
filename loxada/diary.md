@@ -35,3 +35,8 @@
 - Added a supplier-only work panel in Manga & Light Novel, Anime, and Merch. Each supplier sees the panel name for their role. Grouped Application and Messages under Supplier account.
 - Verified six supplier roles at mobile width, including the existing application and conversation links. Logged-out users go to sign-in, customers return to their own portal, and incomplete invitees return to the invitation.
 - Merged the navigation and availability screen for [Manga & Light Novel](https://github.com/lozadatech01/mangalightnovel/pull/19), [Anime](https://github.com/hebratech01/anime/pull/17), and [Merch](https://github.com/padregandatech01/merch/pull/17). The [supplier work panel plan](supplier-work-panels.md) records the tabs and the sequence for adding real submission workflows.
+
+## 2026-11-19 · Self-service password recovery
+
+- Added Forgot password to all four sign-in pages. The same recovery flow uses the account’s sign-in email and returns the user to ordinary sign-in after the password changes.
+- Kept supplier onboarding and staff privileges separate from account recovery. Documented the hosted Site URL, reset template, and email delivery settings in the [password recovery guide](password-recovery.md).
