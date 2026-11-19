@@ -29,3 +29,9 @@
 
 - Moved the live Reader Accounts report into Account Access → Account Analysis. Analytics now groups Title Engagement and Ad Settlements as related business reports. Each reports unavailable while its required source evidence is missing.
 - Verified that saved reader account filters retain their scope and moved the changes to the production branch. [Manga PR](https://github.com/lozadatech01/mangalightnovel/pull/18)
+
+## 2026-11-19 · Supplier work panels
+
+- Added a supplier-only work panel in Manga & Light Novel, Anime, and Merch. Each supplier sees the panel name for their role. Grouped Application and Messages under Supplier account.
+- Verified six supplier roles at mobile width, including the existing application and conversation links. Logged-out users go to sign-in, customers return to their own portal, and incomplete invitees return to the invitation.
+- Merged the navigation and availability screen for [Manga & Light Novel](https://github.com/lozadatech01/mangalightnovel/pull/19), [Anime](https://github.com/hebratech01/anime/pull/17), and [Merch](https://github.com/padregandatech01/merch/pull/17). The [supplier work panel plan](supplier-work-panels.md) records the tabs and the sequence for adding real submission workflows.
