@@ -45,3 +45,9 @@
 ## 2026-11-19 · Cross-device password recovery
 
 - Made new reset links usable on a different device across all four systems. Supabase still verifies and exchanges each one-time recovery code before the app opens the reset form.
+
+## 2026-11-19 · Manga Title Engagement cube
+
+- Added the Manga reading-attempt fact, a flattened star view over the work, edition, unit and release dimensions, and monthly totals for the V1.0 signed-in reading cohort.
+- Added date, content type and verified publisher filters, title breakdown, year → quarter → month drilling and pivoting under Analytics → Title Engagement. Verified cohort completions, distinct-reader totals, coverage rules and role boundaries.
+- The dashboard shows Unavailable until the approved supplier submission, editorial release and reader delivery workflows provide reading evidence. Ad Settlements and the multi-fact galaxy depend on a separate reconciled financial source. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/22)
