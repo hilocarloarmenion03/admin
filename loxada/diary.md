@@ -19,3 +19,8 @@
 
 - Grouped Invitations & Messages, Applications, and Activity under Suppliers in the Manga & Light Novel, Anime, and Merch admin workspaces.
 - Kept the existing routes for conversations, invitations, application reviews, and activity reports. The relevant supplier tab stays selected on detail pages.
+
+## 2026-11-19 · Reporting data and Manga reader design
+
+- Mapped all eight V1.0 reports and 34 measures to their source evidence, grain, reconciliation checks, and eligibility for HQ export. See the [reporting data map](reporting-data-map.md).
+- Drafted the [Manga creator-to-reader schema](manga-reader-schema.md) with the existing account and supplier integration, rights and release gates, reading evidence, local mart, and verification cases. The design is ready for review before implementation.
