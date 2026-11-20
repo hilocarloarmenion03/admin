@@ -56,3 +56,8 @@
 
 - Open a publisher to see its titles, then a title to see its edition-specific chapters. Open a year or quarter to drill on dates independently while retaining the selected content.
 - Verified that release versions of the same chapter roll up together and reads follow the publisher verified for the release. Verified both click paths, roll-up, pivot and exact distinct-reader totals against an isolated database. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/23)
+
+## 2026-11-20 · Manga Title Engagement catalog pickers
+
+- Added direct Publishers, Titles and Chapters selection. Publisher filters narrow the title list, and a title can be selected across all publishers.
+- Populated selection controls from approved release dimensions independently of reading coverage. The empty state explains why the title list is disabled before the first release is available. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/24)
