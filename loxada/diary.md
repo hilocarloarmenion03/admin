@@ -77,3 +77,7 @@
 
 - Replaced free-text language, format, contributor, rights-holder and publication-scope entry with selectable values and individual credit records. A sole creator can record a single declaration tied to the existing application. Kept dates and supporting references optional at intake.
 - Verified both submission paths on mobile, field validation, and preservation of historical versions. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/27)
+
+## 2026-11-20 · Manga creator text limits
+
+- Set a 10-character limit on new Manga creator titles and individual contributor and rights-holder name fields. Previously stored longer values can be carried forward. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/28)
