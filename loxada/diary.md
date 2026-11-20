@@ -61,3 +61,9 @@
 
 - Added direct Publishers, Titles and Chapters selection. Publisher filters narrow the title list, and a title can be selected across all publishers.
 - Populated selection controls from approved release dimensions independently of reading coverage. The empty state explains why the title list is disabled before the first release is available. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/24)
+
+## 2026-11-20 · Supplier supply intake
+
+- Added role-specific drafts, immutable submissions and clarification to the Manga, Anime and Merchandise supplier work panels. Department staff can review submitted versions and record or revoke intake qualification against an exact application revision.
+- Verified all six supplier roles with separate accounts in isolated databases. Confirmed private drafts, preserved receipts, access isolation and current qualification or invitation gates.
+- Documented the handoff from intake to actual rights, delivery and project workflows. Production and manufacturing proposals require an authorized tender source. [Implementation plan](supplier-supply-implementation.md) · [Manga](https://github.com/lozadatech01/mangalightnovel/pull/25) · [Anime](https://github.com/hebratech01/anime/pull/20) · [Merchandise](https://github.com/padregandatech01/merch/pull/20)
