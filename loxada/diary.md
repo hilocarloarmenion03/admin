@@ -81,3 +81,8 @@
 ## 2026-11-20 · Manga creator text limits
 
 - Set a 10-character limit on new Manga creator titles and individual contributor and rights-holder name fields. Previously stored longer values can be carried forward. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/28)
+
+## 2026-11-20 · Customer catalogs
+
+- Added customer browsing in Manga, Anime and Merchandise, Anime access status and prepaid offer details, and a browser-local Merchandise bag.
+- The catalog entries require approved department records. Protected delivery, payment activation, and order fulfillment remain separate operational milestones. [Customer workflow status](customer-workflows.md)
