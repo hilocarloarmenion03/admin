@@ -72,3 +72,8 @@
 
 - Split New title into basic title details and a separate Rights for review step. Made supporting references optional and translated the rights fields into plain-language questions.
 - Both steps use the same exact-version draft and submission history. Rights review still requires the complete declaration. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/26)
+
+## 2026-11-20 · Structured Manga creator intake
+
+- Replaced free-text language, format, contributor, rights-holder and publication-scope entry with selectable values and individual credit records. A sole creator can record a single declaration tied to the existing application. Kept dates and supporting references optional at intake.
+- Verified both submission paths on mobile, field validation, and preservation of historical versions. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/27)
