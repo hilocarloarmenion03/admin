@@ -15,6 +15,8 @@ This implementation follows the [V1.0 business baseline](https://github.com/hilo
 
 Proposed amounts are integer PHP centavos. Date-only quote and offered-rights windows use Manila calendar days and an exclusive end. These initial fields record the supplier’s proposal and protected references. Typed legal, asset-manifest and commercial evidence is validated by the later authority and delivery workflows.
 
+For Manga creators, **New title** starts a private draft with the title, content type, language and format. **Rights for review** is a separate step for contributor roles, rights holders and the proposed publication scope. Supporting references can be added when available. Both steps are saved to the same versioned record.
+
 ## Roles, revisions and receipts
 
 1. Reuse the existing portal account, role and original application. An invited supplier account also requires its completed relationship. A session, account or application suspension blocks writes.
