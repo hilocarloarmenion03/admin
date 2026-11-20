@@ -1,6 +1,8 @@
 # Supplier work panels
 
-Navigation implemented · 19 November 2026
+Navigation and first intake workflows · November 2026
+
+See the [supplier supply implementation](supplier-supply-implementation.md) for the role-specific forms, gates and delivery sequence.
 
 ## Placement and grouping
 
