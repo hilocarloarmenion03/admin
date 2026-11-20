@@ -51,3 +51,8 @@
 - Added the Manga reading-attempt fact, a flattened star view over the work, edition, unit and release dimensions, and monthly totals for the V1.0 signed-in reading cohort.
 - Added date, content type and verified publisher filters, title breakdown, year → quarter → month drilling and pivoting under Analytics → Title Engagement. Verified cohort completions, distinct-reader totals, coverage rules and role boundaries.
 - The dashboard shows Unavailable until the approved supplier submission, editorial release and reader delivery workflows provide reading evidence. Ad Settlements and the multi-fact galaxy depend on a separate reconciled financial source. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/22)
+
+## 2026-11-20 · Manga Title Engagement drill paths
+
+- Open a publisher to see its titles, then a title to see its edition-specific chapters. Open a year or quarter to drill on dates independently while retaining the selected content.
+- Verified that release versions of the same chapter roll up together and reads follow the publisher verified for the release. Verified both click paths, roll-up, pivot and exact distinct-reader totals against an isolated database. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/23)
