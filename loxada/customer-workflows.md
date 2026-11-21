@@ -15,3 +15,5 @@ Trusted operational jobs must supply approved department records. Each private c
 3. Publish one accepted SKU, reserve one eligible quantity and confirm payment and delivery.
 
 Use authorized assets and providers for live data. [V1.0 implementation boundary](https://github.com/hilocarloarmenion03/loxadaentertainmentscompany/blob/main/knowledge/specification/v1.0.md#L140)
+
+The Manga pricing discussion is tracked independently in the [implementation diary](diary.md#2026-11-21--manga--light-novel-monetization-exploration). The catalog rollout supplies no Manga pricing decisions.
