@@ -92,3 +92,7 @@
 - LOXADA intends to work with **both independent authors and established publishers**. A single uniform ₱5 price cannot be assumed acceptable to every rights holder; commercial terms, price-setting authority, licensing conditions, payment fees, and sustainability still need agreement.
 - **Status:** Discussion recorded only. Pay-per-volume and ₱5 pricing remain proposals pending explicit confirmation; no monetization code, live pricing, payouts, or locked V1 baseline was changed by this diary entry.
 
+## 2026-11-21 · Customer catalogs
+
+- Added customer browsing in Manga, Anime and Merchandise, Anime access status and prepaid offer details, and a browser-local Merchandise bag.
+- The catalog entries require approved department records. Protected delivery, payment activation, and order fulfillment remain separate operational milestones. [Customer workflow status](customer-workflows.md)
