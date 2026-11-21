@@ -81,3 +81,14 @@
 ## 2026-11-20 · Manga creator text limits
 
 - Set a 10-character limit on new Manga creator titles and individual contributor and rights-holder name fields. Previously stored longer values can be carried forward. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/28)
+
+## 2026-11-21 · Manga & Light Novel monetization exploration
+
+- Revisited the Manga & Light Novel V1 business model. The three departments remain distinct: Anime uses subscriptions, Merchandise uses purchases, and Manga & Light Novel's monetization is under discussion. Advertising and paid ad removal were considered and explicitly dropped; do not treat them as the current plan.
+- Explored chapter unlocks, early access, tips, bundles, pay-per-title and pay-per-volume. The leading proposal is a one-time payment for permanent **digital access per volume**, with **₱5 per volume** as an illustrative affordable price point, not yet a finalized pricing or licensing policy.
+- Compared the low-price/high-volume strategy with high-price/low-volume digital publishing. The price of a digital volume is a business decision shaped by creation, translation, licensing, revenue sharing, demand, and platform costs; digital copying costs alone do not determine retail price. Expensive listings may represent collections, so compare like-for-like before drawing conclusions.
+- Theoretical example: 20,000 readers buying five ₱5 volumes from one author's title generate **₱500,000 gross sales**. At a 20–30% LOXADA cut, LOXADA's gross share is **₱100,000–₱150,000**, while the creator/rights-holder share is **₱400,000–₱350,000**, before any fees, taxes, or other costs. These are scenario assumptions, not forecasts or observed revenue.
+- Product/business direction: **Affordable + Official + Convenient** — legitimate authorized content, very low purchase friction, smooth reading, and easy payments. The aim is to make the official experience appealing compared with unofficial sources; affordability alone does not guarantee adoption.
+- LOXADA intends to work with **both independent authors and established publishers**. A single uniform ₱5 price cannot be assumed acceptable to every rights holder; commercial terms, price-setting authority, licensing conditions, payment fees, and sustainability still need agreement.
+- **Status:** Discussion recorded only. Pay-per-volume and ₱5 pricing remain proposals pending explicit confirmation; no monetization code, live pricing, payouts, or locked V1 baseline was changed by this diary entry.
+
