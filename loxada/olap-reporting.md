@@ -25,4 +25,4 @@ Use data produced by real, authorized actions and verified sources. Keep dummy, 
 
 ## Cube controls
 
-Place Rows, Columns and Measure together above the pivot table. Follow with the report's date range and relevant dimension filters. Provide Roll up, Drill down, and a Show grand totals control where the dataset supports them. Use the department's approved measures, hierarchy, and working date grain. Keep the summary and table on the same applied filter selection, with exact distinct counts and rates recomputed at the displayed grain. [First Title Engagement implementation](https://github.com/lozadatech01/mangalightnovel/pull/30)
+Support selectable table axes and measures, a date range and relevant dimension filters. Provide roll-up, drill-down, axis swapping and table totals where the report supports them. Each department owns the wording, layout, and interaction design for its workspace. Use the approved business measures and hierarchies, and apply the same filter selection to table cells and the summary.
