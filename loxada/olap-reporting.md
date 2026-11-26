@@ -22,3 +22,7 @@ See the [data warehousing glossary reference](data-warehousing-reference.md) for
 ## Report data
 
 Use data produced by real, authorized actions and verified sources. Keep dummy, seeded, and invented figures out of app reports and exports. When the source workflow or evidence is missing, show **Unavailable**. Show zero only when a successful query establishes a valid empty result. Release approved department summaries to HQ under the V1.0 permission and disclosure rules. Before extending real capture to customer activity or new external sources, resolve the applicable authorization and privacy requirements.
+
+## Cube controls
+
+Place Rows, Columns and Measure together above the pivot table. Follow with the report's date range and relevant dimension filters. Provide Roll up, Drill down, and a Show grand totals control where the dataset supports them. Use the department's approved measures, hierarchy, and working date grain. Keep the summary and table on the same applied filter selection, with exact distinct counts and rates recomputed at the displayed grain. [First Title Engagement implementation](https://github.com/lozadatech01/mangalightnovel/pull/30)
