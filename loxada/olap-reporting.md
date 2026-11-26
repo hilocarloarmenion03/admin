@@ -25,4 +25,4 @@ Use data produced by real, authorized actions and verified sources. Keep dummy, 
 
 ## Cube controls
 
-Support selectable table axes and measures, a date range and relevant dimension filters. Provide roll-up, drill-down, axis swapping and table totals where the report supports them. Each department owns the wording, layout, and interaction design for its workspace. Use the approved business measures and hierarchies, and apply the same filter selection to table cells and the summary.
+Support selectable table axes and measures, a date range and relevant dimension filters. Provide roll-up, drill-down, axis swapping and table totals where the report supports them. Each department owns the wording, layout, and interaction design for its workspace. Use the approved business measures and hierarchies, and apply the same filter selection to table cells and the summary. Recompute exact distinct counts and rates at the displayed grain. [Manga Title Engagement](https://github.com/lozadatech01/mangalightnovel/pull/31)
