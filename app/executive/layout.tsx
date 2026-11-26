@@ -7,7 +7,7 @@ export default async function ExecutiveLayout({children}:{children:React.ReactNo
   return <div className="hq-exec-shell">
     <header className="hq-exec-bar">
       <strong>Loxada <span>Headquarters</span></strong>
-      <nav aria-label="Executive navigation"><Link href="/executive">Overview</Link><Link href="/executive/accounts">Account Access</Link></nav>
+      <nav aria-label="Executive navigation"><Link href="/executive">Overview</Link><Link href="/executive/accounts">Account Access</Link><Link href="/executive/opportunities">Feasibility reviews</Link></nav>
       <div className="hq-exec-account"><div><b title={member.user.email}>{username}</b><small>Executive</small></div><form action={signOut}><button type="submit">Log out</button></form></div>
     </header>
     <div className="hq-exec-content">{children}</div>
