@@ -101,3 +101,8 @@
 
 - Added explicit Rows, Columns and Measure selectors, an inclusive Manila month range, a Show grand totals option, and summary totals to Title Engagement. The report uses one content axis and one date axis.
 - Preserved linked publisher and title drill-down and date roll-up. Verified cross-year ranges and kept uncovered reading totals unavailable. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/30)
+
+## 2026-11-26 · Manga editorial report layout
+
+- Reorganized Title Engagement around a table setup sidebar and an expandable filter section. The report shows date navigation alongside the results and places selection totals below the table.
+- Recorded the shared cube behavior separately from each department’s layout and wording. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/31)
