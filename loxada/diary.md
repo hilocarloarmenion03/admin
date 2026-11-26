@@ -106,3 +106,7 @@
 
 - Reorganized Title Engagement around a table setup sidebar and an expandable filter section. The report shows date navigation alongside the results and places selection totals below the table.
 - Recorded the shared cube behavior separately from each department’s layout and wording. [Manga implementation](https://github.com/lozadatech01/mangalightnovel/pull/31)
+
+## 2026-11-26 · Warehouse design and executive review
+
+- Documented fact grains, time-dependent dimensions, ETL recovery, privacy and report acceptance across the departments and HQ. Recorded the opening production evidence separately from proposed acceptance tests. [Technical review](warehouse-technical-report.md) · [Executive briefing](warehouse-executive-briefing.md)
