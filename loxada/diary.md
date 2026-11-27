@@ -110,3 +110,8 @@
 ## 2026-11-26 · Warehouse design and executive review
 
 - Documented fact grains, time-dependent dimensions, ETL recovery, privacy and report acceptance across the departments and HQ. Recorded the opening production evidence separately from proposed acceptance tests. [Technical review](warehouse-technical-report.md) · [Executive briefing](warehouse-executive-briefing.md)
+
+## 2026-11-27 · HQ opportunity handoff
+
+- Documented preparation and trusted intake of independently approved Manga-to-Anime and Anime-to-Merch proposals, the executive feasibility decision, and department receipt. Initial HQ verification recorded an empty queue and denied anonymous access. Real case acceptance awaits authorized source evidence. [Opportunity reviews](opportunity-reviews.md)
+- The Manga transfer script stages a reconciled month against an exact-digest permission for separate HQ publication. A feasibility case requires its own release authority. [Transfer implementation](https://github.com/hilocarloarmenion03/admin/pull/14)
