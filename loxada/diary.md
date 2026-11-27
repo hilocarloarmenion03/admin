@@ -115,3 +115,10 @@
 
 - Documented preparation and trusted intake of independently approved Manga-to-Anime and Anime-to-Merch proposals, the executive feasibility decision, and department receipt. Initial HQ verification recorded an empty queue and denied anonymous access. Real case acceptance awaits authorized source evidence. [Opportunity reviews](opportunity-reviews.md)
 - The Manga transfer script stages a reconciled month against an exact-digest permission for separate HQ publication. A feasibility case requires its own release authority. [Transfer implementation](https://github.com/hilocarloarmenion03/admin/pull/14)
+
+## 2026-11-27 · Department reporting and production verification
+
+- Manga suppliers can stage chapter assets against a permitted submitted version. Verified publication makes the exact pages available to eligible readers. The reading mart refreshes every six hours for months with recorded source coverage. [Reading model](https://github.com/lozadatech01/mangalightnovel/blob/main/docs/title-engagement.md)
+- Anime gained subscription activity reporting, protected playback and title, season and episode viewing analysis. The player records starts. Duration and completion require independently verified playback intervals. [Viewing workflow](https://github.com/hebratech01/anime/blob/main/docs/episode-viewing.md)
+- Merchandise buyers gained a persistent bag. The department can ingest accepted lots and stock movements and publish a reconciled SKU and warehouse snapshot when a Manila day closes. [Inventory workflow](https://github.com/padregandatech01/merch/blob/main/docs/inventory-report.md)
+- HQ can validate and publish a separately approved Manga month and explore it by work and time. The warehouse received no approved batch during verification. The source databases contained no licensed Anime playback or merchandise stock movements to demonstrate commercial outcomes. [Warehouse guide](hq-reading-warehouse.md) · [Executive briefing slides](warehouse-executive-briefing.pptx)
