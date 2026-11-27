@@ -11,3 +11,13 @@ HQ accepts the PA06-R2 Manga monthly title engagement summary for SIGNED_IN_ELIG
 The report identifies works by their source key. Human-readable titles and shared IP mappings require approved metadata. Anime and Merchandise require separate validation and publication contracts.
 
 Approved partitions can be staged using the [two-service transfer client](../scripts/stage-manga-engagement.py). Both databases verify the same content digest. Intake accepts closed months within the source export window.
+
+## Aggregate retention
+
+REPORTS_24M starts at the end of the source period. A January 2024 monthly revision becomes eligible on February 1, 2026 at midnight Manila time. The reporting window can stop displaying a partition earlier. Warehouse access and primary disposal have separate decisions.
+
+An authorized operator reviews the private reading_retention_queue for identifying content, approved preservation purposes and active holds. Record a case-scoped reading_hold with its reason, reviewer and next review date for a month, optionally narrowed to a revision. Establish a hold before approving disposal. Open holds immediately restrict executive access to the affected publication. A due review date prompts review and keeps the hold active. To release, record the actual release time and reference. Record a reading_disposal_review only after checking the precise revision for disposal eligibility. Remove a mistaken approval before disposal runs.
+
+The database runs dispose_reading_reports daily at 03:20 Manila time. Each approved expired revision is removed atomically with its work-month facts and review, leaving a minimal receipt. The routine checks holds again inside the disposal transaction. Permission decisions and transfer audit records have separate purposes. The original transfer digest alone cannot restore a deleted report through the closed-month intake gate.
+
+After restoring a backup, restrict executive access, reconcile current holds, permissions and disposal receipts against the restore point, and apply eligible disposal before reopening reporting. Provider backup expiry and restore rehearsal need independent verification.
