@@ -1,0 +1,21 @@
+.reports {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+  max-width: 68rem;
+}
+.report {
+  display: block;
+  padding: 1.5rem;
+  color: inherit;
+  background: white;
+  border: 1px solid #cbd5cd;
+  border-top: 3px solid #436650;
+  text-decoration: none;
+}
+.report span { font-size: .85rem; color: #435e4c; }
+.report h2 { margin: .75rem 0; font: 1.55rem Georgia, serif; }
+.report p { line-height: 1.5; margin: 0; }
+.report:hover h2, .report:focus-visible h2 { text-decoration: underline; }
+.report:focus-visible { outline: 3px solid #315740; outline-offset: 3px; }
